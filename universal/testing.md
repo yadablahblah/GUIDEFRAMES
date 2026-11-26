@@ -48,7 +48,7 @@ gate run, record the exact command, the actual outcome (including pass/fail/
 skipped counts where available), and the commit or change it covered. Link the
 CI run when available. For manual verification, record the steps performed and
 what happened. Map each functional requirement in the approved outline to its
-test or verification and status. A statement such as “tests passed” without
+test or verification and status. A statement such as "tests passed" without
 recorded execution details is not sufficient evidence; never invent or imply a
 run that did not happen.
 
