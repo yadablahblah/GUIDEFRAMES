@@ -1,4 +1,4 @@
-# New Guide Framework
+# New Guide Framework UNDER (CONSTRUCTION TEST IF YOU LIKE) 
 
 A lightweight, two-layer framework for AI-assisted software creation aimed at
 novice users.
