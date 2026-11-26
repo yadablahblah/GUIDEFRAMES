@@ -26,9 +26,28 @@ Loaded for every project. Instructions to the AI.
 - Use appropriate authentication and authorisation.
 - Consider common vulnerabilities (injection, path traversal, insecure
   deserialization, etc.) for the target platform.
+- Before implementation, identify the important data and actions, trust
+  boundaries, likely misuse or attack paths, and security controls. Keep the
+  review proportional to the project's exposure and impact; record material
+  risks and mitigations in the outline.
+- For authenticated apps, define who can perform each sensitive action and
+  enforce authorization on the server or trusted core, not only in the UI.
+- For web apps, assess session and cookie protections, CSRF, CORS, content
+  security policy, and transport security as applicable. Do not copy a
+  permissive example policy into production without checking the app's needs.
+- Protect sensitive data in transit and at rest where appropriate. Minimize
+  collection, access, retention, and logging; document deletion and backup
+  behavior.
+- Add security-focused tests for important access-control and input-validation
+  rules. Run the relevant dependency and platform security checks before
+  release; report findings and their disposition.
 - Avoid logging secrets or sensitive personal information.
 - Review third-party dependencies and integrations for known issues.
 - Never weaken existing security controls.
+
+Do not claim a project is secure or compliant merely because these steps were
+followed. For high-impact, regulated, or safety-critical systems, identify the
+required specialist review before release.
 
 ## File-system apps (common case)
 

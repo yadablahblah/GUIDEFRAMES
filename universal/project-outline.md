@@ -45,18 +45,32 @@ It must cover:
   checked as implemented and tested (see `testing.md` completion gate).
 
 ### 7. Non-functional requirements
-- Security, privacy, performance, reliability expectations.
+- Security, privacy, performance, and reliability expectations. Make them
+  measurable where practical (for example expected users or requests, response
+  time, availability, and recovery time); mark unknowns as assumptions and say
+  how they will be validated.
 - Any platform constraints (permissions, sandboxing, offline).
+- For a deployed service, include the availability target, expected load,
+  failure behavior, monitoring/alerting, backup and recovery targets, and who
+  operates it. For an app that stores user data, include data sensitivity,
+  access rules, retention, and deletion expectations.
+- For security-sensitive, regulated, payment, or safety-critical projects,
+  identify applicable standards and required qualified review. Do not claim
+  compliance based only on following these guides.
 
 ### 8. Test plan
 - What will be tested and how (unit, integration, end-to-end).
 - Any manual verification steps (e.g. UI on a real display).
-- The completion gate: all tests must pass (or be reported as known limitations)
-  before the work is called done.
+- The required automated and manual checks, including release-build and
+  deployment smoke checks where applicable. A skipped or failing required
+  check blocks completion or release unless the user explicitly accepts a
+  documented, non-release exception (see `testing.md`).
 
 ### 9. Packaging and distribution
 - How the user will get the finished app (AppImage, installer, web deploy).
 - Whether a release will be published (requires user approval).
+- How deployment is verified and rolled back, and what monitoring is checked
+  after deployment.
 
 ### 10. Risks and open questions
 - Anything that could materially affect scope, cost, or feasibility.

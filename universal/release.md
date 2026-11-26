@@ -48,6 +48,23 @@ Explicit user approval is required before:
 Do not treat silence as approval. A successful local build does not authorise
 deployment.
 
+## Production release gate
+
+Before proposing a production release, verify and report:
+
+- Required tests, quality checks, and release builds passed in CI.
+- The deployed artifact matches the reviewed source and has been smoke-tested
+  in an environment representative of production.
+- High or critical security findings are fixed or explicitly assessed and
+  resolved before release; do not silently waive them.
+- Configuration, monitoring, alert ownership, backup/restore, and rollback
+  procedures are ready for this release.
+- Any database or data migration has a tested upgrade and recovery plan.
+
+If a required item is incomplete, report the release as blocked and identify
+what remains. Only the user may authorize deployment, and approval does not
+turn a failed or unverified check into a pass.
+
 ## Release artefacts
 
 - Produce the build artefact(s) for the target (AppImage, installer, container,

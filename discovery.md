@@ -76,6 +76,14 @@ The AI states which files it needs and why; the novice copies them into a
    - A website, a desktop program, a phone app, a command-line tool, etc.
    - If the description is too vague to classify, the AI asks plain-language
      follow-up questions first.
+   - Before planning a project intended for real users, it clarifies only the
+     details that could change the design or risk: who can use it and what
+     they can do, what data it handles, expected usage and availability, what
+     should happen when a dependency or device is unavailable, and who will
+     deploy and support it. For sensitive or regulated data, public services,
+     payments, or safety-critical use, it asks about applicable requirements
+     and flags the need for qualified review. Unknowns are recorded as
+     assumptions, not treated as verified requirements.
    - If you already have a project (not starting fresh), the AI inspects the
      existing code first and preserves its conventions rather than scaffolding
      over it.
@@ -95,8 +103,8 @@ The AI states which files it needs and why; the novice copies them into a
    > - `languages/rust-desktop.md`
    > - `packaging/linux-appimage.md`
    >
-   > You can get them from: `<the GitHub library address — to be filled in
-   > before this guide is published>`
+   > You can get them from:
+   > https://github.com/yadablahblah/GUIDEFRAMES
 
    You copy each file into a `FRAMEWORKS/` folder in your project, keeping the
    sub-folders (`FRAMEWORKS/universal/`, `FRAMEWORKS/languages/`,
@@ -124,13 +132,6 @@ The AI states which files it needs and why; the novice copies them into a
 6. **Starts building.** The AI writes the code, tests, and documentation
    following the guides and the approved outline, committing each verified
    increment after you confirm it is good.
-
----
-
-## Before this guide is published
-
-The GitHub library address in step 3 is a placeholder. Fill in the real
-repository URL before distributing `discovery.md` to users.
 
 ---
 

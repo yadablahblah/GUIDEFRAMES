@@ -24,6 +24,29 @@ containers, or anything deployed. Instructions to the AI.
 - Crash reporting: consider a tool (Sentry, etc.) only if the user approves the
   external dependency and privacy trade-off.
 
+## Production readiness
+
+Before a service is exposed to real users, record operational expectations in
+the project outline and verify the applicable items:
+
+- Define measurable service targets where appropriate (availability,
+  throughput, and response time) and the expected peak load. Do not promise
+  targets the design or hosting plan cannot support.
+- Set timeouts on network and database operations. Retry only transient,
+  safe-to-repeat operations, with bounded attempts and backoff; avoid retry
+  storms. Define behavior when a required dependency is unavailable.
+- Provide separate liveness and readiness checks when the hosting platform
+  needs them. Readiness must not send traffic to an instance that cannot serve
+  requests; health endpoints must not expose sensitive details.
+- For services, collect enough metrics and logs to detect user-visible
+  failures, saturation, and dependency problems. Define actionable alerts and
+  who responds to them; avoid collecting secrets or unnecessary personal data.
+- Handle shutdown and termination signals so in-flight work can finish or fail
+  predictably and resources are released.
+- Document deployment ownership, environment promotion, required configuration,
+  and a smoke check for the critical user path. Verify the deployed service,
+  not only the local build.
+
 ## Caching
 
 - Add a cache only when measured performance needs it — not speculatively.
@@ -111,6 +134,9 @@ Rules:
 ## Backup & recovery
 
 - Back up any non-trivial data store; document the procedure and test a restore.
+- Set recovery point and recovery time expectations where the data or service
+  warrants them. A backup is not verified until a restore has been tested and
+  the result recorded.
 - For file-manipulating apps, never delete user data without a recoverable path
   (trash, backup, or undo) where feasible.
 - Document recovery steps in the README.

@@ -22,7 +22,7 @@ Loaded for every project. Instructions to the AI.
 ## Completion gate (mandatory)
 
 A task is **not done** until:
-- All tests pass (or failures are reported as known limitations with a reason).
+- All required tests pass.
 - The quality gates for the target language pass (see `languages/*`).
 - `cargo build --release` / `vite build` / equivalent release build succeeds.
 - **Spec check**: every functional requirement in the approved project outline
@@ -31,9 +31,12 @@ A task is **not done** until:
   requirement is unimplemented or untested, it is not done — report it as
   **blocked** or **partially verified**, do not claim completion.
 
-Do not report completion with failing tests or unmet requirements. If a test
-cannot be made to pass, report it as **blocked** or **failed** with the reason —
-never silently omit it. If a requirement cannot be met, say so plainly.
+If a required check fails, cannot run, or a requirement is unmet, report the
+work as **blocked**, **failed**, or **partially verified** with the reason;
+never silently omit it or describe it as passing. The user may explicitly
+accept a documented exception for a non-release task, but this does not make
+the check pass or make the project production-ready. Do not proceed with a
+production release while a required check is failing or unverified.
 
 ## Reporting
 
