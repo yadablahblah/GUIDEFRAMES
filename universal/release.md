@@ -48,22 +48,37 @@ Explicit user approval is required before:
 Do not treat silence as approval. A successful local build does not authorise
 deployment.
 
-## Production release gate
+## Production release gate and evidence
 
-Before proposing a production release, verify and report:
+Before proposing a production release, verify and report the following. Create
+or update `documentation/PRODUCTION_READINESS.md` and record the outcome and
+evidence for each applicable check against the approved project outline:
 
-- Required tests, quality checks, and release builds passed in CI.
-- The deployed artifact matches the reviewed source and has been smoke-tested
-  in an environment representative of production.
-- High or critical security findings are fixed or explicitly assessed and
-  resolved before release; do not silently waive them.
-- Configuration, monitoring, alert ownership, backup/restore, and rollback
-  procedures are ready for this release.
+- Required tests, quality checks, and release builds passed in CI. Map every
+  functional requirement to its test or verification and status; refer to
+  `documentation/TEST_REPORT.md` for commands, results, and CI run links.
+- Build, lint, test, and target-language quality-gate results for the release
+  commit. Link CI runs where available; identify checks that were not run or
+  could not be completed.
+- High or critical security and dependency audit findings are fixed or
+  explicitly assessed and resolved before release; do not silently waive them.
+  Record each finding and its disposition (see `operations.md`).
+- Production configuration and secret handling are ready. For deployed
+  services, verify applicable logging, health checks, monitoring, and alert
+  ownership.
+- For projects with persistent data, record backup and restore verification.
+  Record the rollback procedure and its verification where feasible.
+- The deployed artifact matches the reviewed source, has been smoke-tested in
+  an environment representative of production, and its checksum, release notes,
+  known issues, and remaining limitations are recorded.
 - Any database or data migration has a tested upgrade and recovery plan.
 
-If a required item is incomplete, report the release as blocked and identify
-what remains. Only the user may authorize deployment, and approval does not
-turn a failed or unverified check into a pass.
+Mark inapplicable checks as **not applicable** with a brief reason; do not omit
+them silently. A checklist entry is evidence of review, not proof by itself:
+link the relevant test report, CI run, audit result, or verification record. If
+a required item is incomplete, report the release as blocked and identify what
+remains. Only the user may authorize deployment, and approval does not turn a
+failed or unverified check into a pass or make the project production-ready.
 
 ## Release artefacts
 
