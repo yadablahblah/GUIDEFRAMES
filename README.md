@@ -10,7 +10,7 @@ pulling only the guides it needs from this library.
 
 ## How it works
 
-1. **Novice** fills in `discovery.md` (what + target system, plain language).
+1. **Novice** fills in `discovery.md` (what + target system, plain language) or AI asks the questions.
 2. **AI** classifies the project (or asks plain-language follow-ups; inspects
    existing code if not greenfield).
 3. **AI** selects the specific guides it needs from the catalogue and asks the
