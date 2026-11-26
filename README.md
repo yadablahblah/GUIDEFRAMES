@@ -7,9 +7,9 @@ A lightweight, two-layer guide library for AI-assisted software creation. It is 
 ## Get started
 
 1. Open [`discovery.md`](discovery.md) and copy its prompt into your AI coding assistant.
-2. Fill in what you want to build and where it should run. Add any important details; you do not need to choose a language or framework.
-3. The assistant will ask questions if needed, then name the guide files that fit your project and explain why.
-4. Copy only those files into a `FRAMEWORKS/` folder in your project, preserving their subfolders. For example:
+2. Describe what you already know about what you want to build and where it should run. If you are unsure, you can leave either blank; the assistant will ask follow-up questions. Add any important details; you do not need to choose a language or framework.
+3. After clarifying anything it needs, the assistant will name the guide files that fit your project and explain why, then retrieve them from this repository when it can.
+4. The assistant places only those files in a `FRAMEWORKS/` folder in your project, preserving their subfolders. If it cannot access the repository or add files, it gives you direct links and asks you to provide them. For example:
 
    ```text
    FRAMEWORKS/
@@ -22,9 +22,9 @@ A lightweight, two-layer guide library for AI-assisted software creation. It is 
        └── linux-appimage.md
    ```
 
-5. Ask the assistant to read the copied guides. It will help establish a local Git baseline, present a project outline for your approval, and then build the project in verified increments.
+5. Once the guides are in place, the assistant reads them, helps establish a local Git baseline, presents a project outline for your approval, and then builds the project in verified increments.
 
-You do not need to copy the whole library. The project-specific `FRAMEWORKS/` folder is a snapshot and can be removed when the project is complete.
+You do not need to copy the whole library. The project-specific `FRAMEWORKS/` folder is a temporary local snapshot: the assistant adds it to `.gitignore`, so the guide copies are not committed or pushed with your project. It can be removed when the project is complete.
 
 ## How the guides are selected
 

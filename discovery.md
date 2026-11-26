@@ -7,11 +7,25 @@ plain language. You do not need to know any technical terms.
 
 ## The prompt (copy and fill in)
 
+Fill in whatever you know. If you are unsure about what you want to build or
+where it should run, leave that line blank or say you are not sure; the AI will
+ask plain-language follow-up questions if it needs more information.
+
 > I want to build: **[describe what you want in your own words]**
 >
 > It should run on: **[Windows / Mac / Linux / more than one / a website / a phone / a server (runs in the background)]**
 >
 > A bit more detail (optional): **[who uses it, what problem it solves, anything it must or must not do]**
+>
+> Guide library: https://github.com/yadablahblah/GUIDEFRAMES
+>
+> Read `discovery.md` from this repository and follow its process. Choose and
+> read the relevant guides, then place copies in my project's `FRAMEWORKS/`
+> folder, preserving their paths. Do not clone this library into my project or
+> change my project's Git history. If you cannot access GitHub or add files,
+> tell me which files you need, with direct links, and ask me to provide them.
+> Keep `FRAMEWORKS/` local-only: add it to `.gitignore`, and never stage,
+> commit, or push the guide copies.
 
 That is the whole prompt. Everything after this is what the AI does with it.
 
@@ -20,7 +34,9 @@ That is the whole prompt. Everything after this is what the AI does with it.
 ## Library catalogue (what the AI can choose from)
 
 The AI selects from this menu based on the description and target system. It
-requests only the files it needs; the novice pulls them.
+retrieves only the files it needs from the repository and places them in the
+project; the novice does not need to fetch them manually when the AI can access
+the repository and project files.
 
 **Universal — the AI selects the ones that apply:**
 - `universal/agent-conduct.md` — how the AI behaves (always).
@@ -65,8 +81,9 @@ requests only the files it needs; the novice pulls them.
 **Conditional:**
 - `seo.md` — only for public websites that should be indexed.
 
-The AI states which files it needs and why; the novice copies them into a
-`FRAMEWORKS/` folder.
+The AI states which files it needs and why, then retrieves and copies them into
+the project's `FRAMEWORKS/` folder when it can. It adds `/FRAMEWORKS/` to
+`.gitignore` so the guide copies stay local.
 
 ---
 
@@ -92,24 +109,16 @@ The AI states which files it needs and why; the novice copies them into a
      choice covers every platform, it flags the conflict and proposes a
      cross-platform alternative or a per-platform UI in the outline.
 
-2. **Selects and requests the guidance files.** Based on the project type and
+2. **Selects and retrieves the guidance files.** Based on the project type and
    target system, the AI picks the specific guides it needs from the catalogue
    (a language doc, the relevant universal docs, packaging for your OS, SEO only
-   if public web). It will say something like:
-   > Please download these files into your project folder:
-   > - `universal/architecture.md`
-   > - `universal/testing.md`
-   > - `universal/security.md`
-   > - `languages/rust-desktop.md`
-   > - `packaging/linux-appimage.md`
-   >
-   > You can get them from:
-   > https://github.com/yadablahblah/GUIDEFRAMES
-
-   You copy each file into a `FRAMEWORKS/` folder in your project, keeping the
-   sub-folders (`FRAMEWORKS/universal/`, `FRAMEWORKS/languages/`,
-   `FRAMEWORKS/packaging/`). The AI tells you the exact layout it expects. This
-   folder is temporary — it can be deleted once the project is complete.
+   if public web), then retrieves them from
+   https://github.com/yadablahblah/GUIDEFRAMES and copies them into
+   `FRAMEWORKS/`, preserving their subfolders. The AI adds `/FRAMEWORKS/` to
+   `.gitignore`; guide copies are temporary local context and are never staged,
+   committed, or pushed. If the AI cannot access the repository or write files,
+   it gives you direct links to the selected files and tells you exactly where
+   to put them. The folder can be removed when the project is complete.
 
 3. **Reads the guides.** The AI reads the pulled guide files so it understands
    the project's structure, test approach, security rules, and target specifics
@@ -117,10 +126,11 @@ The AI states which files it needs and why; the novice copies them into a
 
 4. **Sets up local version control.** Before any code or the outline, the AI
    walks you through creating a local git repository (`git init`), checks the
-   current state, and makes an initial commit (e.g. the `FRAMEWORKS/` guides +
-   a `.gitignore`). This gives the project a baseline so every later increment
-   is recoverable. The AI explains each command in plain language and confirms
-   before running it. No remote is created or pushed to unless you ask.
+   current state, adds `/FRAMEWORKS/` to `.gitignore`, and makes an initial
+   commit of the project files and `.gitignore` (not the guide copies). This
+   gives the project a baseline so every later increment is recoverable. The AI
+   explains each command in plain language and gets your confirmation before
+   committing. No remote is created or pushed to unless you ask.
 
 5. **Presents a project outline for your approval.** Now informed by the guides,
    the AI creates a short, plain-language outline: what the project will do,
