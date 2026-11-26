@@ -16,6 +16,14 @@ ask plain-language follow-up questions if it needs more information.
 > It should run on: **[Windows / Mac / Linux / more than one / a website / a phone / a server (runs in the background)]**
 >
 > A bit more detail (optional): **[who uses it, what problem it solves, anything it must or must not do]**
+>
+> Guide library: https://github.com/yadablahblah/GUIDEFRAMES
+>
+> Read `discovery.md` from this repository and follow its process. Choose and
+> read the relevant guides, then place copies in my project's `FRAMEWORKS/`
+> folder, preserving their paths. Do not clone this library into my project or
+> change my project's Git history. If you cannot access GitHub or add files,
+> tell me which files you need, with direct links, and ask me to provide them.
 
 That is the whole prompt. Everything after this is what the AI does with it.
 
@@ -69,8 +77,8 @@ requests only the files it needs; the novice pulls them.
 **Conditional:**
 - `seo.md` — only for public websites that should be indexed.
 
-The AI states which files it needs and why; the novice copies them into a
-`FRAMEWORKS/` folder.
+The AI states which files it needs and why, then retrieves and copies them into
+the project's `FRAMEWORKS/` folder when it can.
 
 ---
 
@@ -107,13 +115,19 @@ The AI states which files it needs and why; the novice copies them into a
    > - `languages/rust-desktop.md`
    > - `packaging/linux-appimage.md`
    >
-   > You can get them from:
-   > https://github.com/yadablahblah/GUIDEFRAMES
+   > Source repository: https://github.com/yadablahblah/GUIDEFRAMES
+   >
+   > Retrieve and read the selected files from this repository, then place
+   > copies in the project's `FRAMEWORKS/` folder. Do not clone this library
+   > into the project or replace the project's Git history. If you cannot
+   > access the repository or add files, give the user direct links to the
+   > selected files and ask them to provide or copy them.
 
-   You copy each file into a `FRAMEWORKS/` folder in your project, keeping the
-   sub-folders (`FRAMEWORKS/universal/`, `FRAMEWORKS/languages/`,
-   `FRAMEWORKS/packaging/`). The AI tells you the exact layout it expects. This
-   folder is temporary — it can be deleted once the project is complete.
+   The AI copies each file into a `FRAMEWORKS/` folder in your project, keeping
+   the sub-folders (`FRAMEWORKS/universal/`, `FRAMEWORKS/languages/`,
+   `FRAMEWORKS/packaging/`). If it cannot access or write the files, it gives
+   you direct links and tells you exactly where to put them. This folder is
+   temporary — it can be deleted once the project is complete.
 
 3. **Reads the guides.** The AI reads the pulled guide files so it understands
    the project's structure, test approach, security rules, and target specifics

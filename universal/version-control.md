@@ -18,9 +18,13 @@ Set up local version control before writing code or the project outline:
   to keep the real email private while still linking commits to the profile.
   Use local (per-repo) config, not `--global`, unless the user wants it
   everywhere.
-- Create a `.gitignore` appropriate to the target (build output, secrets,
-  `FRAMEWORKS/` if it is temporary, OS/editor files).
-- Make an initial commit of the baseline (guides + `.gitignore` + any scaffold).
+- Create a `.gitignore` appropriate to the target (build output, secrets, and
+  OS/editor files). Do not ignore `FRAMEWORKS/` by default: it is the
+  project-specific guide snapshot and belongs in the baseline commit. Ignore it
+  only if the user explicitly asks.
+- Propose an initial commit of the baseline (guides + `.gitignore` + any
+  scaffold), explain what it contains, and get the user's confirmation before
+  committing.
 - Do not create a remote or push unless the user asks.
 - This baseline makes every later increment recoverable from the first change.
 
@@ -53,7 +57,8 @@ Use checkpoints to make substantial changes recoverable. Before any rollback:
 
 ## Commit discipline
 
-- Commit only when the user explicitly asks.
+- Commit only after the user explicitly approves the proposed commit; ask for
+  approval rather than waiting for the user to initiate the request.
 - Stage only intended files — never `git add .` blindly.
 - Write a concise message matching the repo style.
 - If a commit fails or hooks reject it, fix the issue and create a new commit;
