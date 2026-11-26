@@ -19,12 +19,11 @@ Set up local version control before writing code or the project outline:
   Use local (per-repo) config, not `--global`, unless the user wants it
   everywhere.
 - Create a `.gitignore` appropriate to the target (build output, secrets, and
-  OS/editor files). Do not ignore `FRAMEWORKS/` by default: it is the
-  project-specific guide snapshot and belongs in the baseline commit. Ignore it
-  only if the user explicitly asks.
-- Propose an initial commit of the baseline (guides + `.gitignore` + any
-  scaffold), explain what it contains, and get the user's confirmation before
-  committing.
+  OS/editor files), including `/FRAMEWORKS/`. The copied guides are temporary
+  local context: never stage, commit, or push them.
+- Propose an initial commit of the baseline (`.gitignore` + project files and
+  any scaffold, excluding `FRAMEWORKS/`), explain what it contains, and get the
+  user's confirmation before committing.
 - Do not create a remote or push unless the user asks.
 - This baseline makes every later increment recoverable from the first change.
 

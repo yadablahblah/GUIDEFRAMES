@@ -24,7 +24,7 @@ A lightweight, two-layer guide library for AI-assisted software creation. It is 
 
 5. Once the guides are in place, the assistant reads them, helps establish a local Git baseline, presents a project outline for your approval, and then builds the project in verified increments.
 
-You do not need to copy the whole library. The project-specific `FRAMEWORKS/` folder is a snapshot and can be removed when the project is complete.
+You do not need to copy the whole library. The project-specific `FRAMEWORKS/` folder is a temporary local snapshot: the assistant adds it to `.gitignore`, so the guide copies are not committed or pushed with your project. It can be removed when the project is complete.
 
 ## How the guides are selected
 
