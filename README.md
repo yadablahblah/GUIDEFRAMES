@@ -81,3 +81,7 @@ Guides copied into `FRAMEWORKS/` do not update automatically. To refresh them, c
 ## Contributing guides
 
 To add a language or domain, create a guide in `languages/` and add its selection rule to the table in this README and the catalogue in `discovery.md`. To add a packaging target, create a guide in `packaging/` and add its selection rule to both places.
+
+## Acknowledgements
+
+This project was built with the assistance of [Kilo Code](https://kilo.ai), an AI coding agent. The AI handled implementation and documentation; the human directed scope, reviewed changes, and made all release decisions.
