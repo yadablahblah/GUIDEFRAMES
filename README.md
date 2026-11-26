@@ -1,144 +1,83 @@
-# New Guide Framework (UNDER CONSTRUCTION TEST IF YOU LIKE) 
+# Guideframes
 
-A lightweight, two-layer framework for AI-assisted software creation aimed at
-novice users.
+A lightweight, two-layer guide library for AI-assisted software creation. It is designed to help people describe what they want to build in plain language while an AI coding assistant handles the technical planning and implementation.
 
-## The idea
+> **Status:** This project is under construction. Review the guides before using them in a project.
 
-The novice gives one plain-language prompt. The AI does the technical work,
-pulling only the guides it needs from this library.
+## Get started
 
-## How it works
+1. Open [`discovery.md`](discovery.md) and copy its prompt into your AI coding assistant.
+2. Fill in what you want to build and where it should run. Add any important details; you do not need to choose a language or framework.
+3. The assistant will ask questions if needed, then name the guide files that fit your project and explain why.
+4. Copy only those files into a `FRAMEWORKS/` folder in your project, preserving their subfolders. For example:
 
-1. **Novice** fills in `discovery.md` (what + target system, plain language) or AI asks the questions.
-2. **AI** classifies the project (or asks plain-language follow-ups; inspects
-   existing code if not greenfield).
-3. **AI** selects the specific guides it needs from the catalogue and asks the
-   novice to pull those files into the project's `FRAMEWORKS/` folder (temporary
-   — can be deleted once the project is complete).
-4. **Novice** copies the named files (the only technical action required).
-5. **AI** reads the guides, then walks the novice through `git init` + an
-   initial baseline commit (no remote unless asked).
-6. **AI** presents a plain-language **project outline** (what it will do, what
-   it won't, tech chosen, test plan, risks) for the novice to approve. Nothing
-   is coded until approved.
-7. **AI** builds the project following the guides and outline, committing each
-   verified increment after the novice confirms it is good.
+   ```text
+   FRAMEWORKS/
+   ├── universal/
+   │   ├── agent-conduct.md
+   │   └── testing.md
+   ├── languages/
+   │   └── rust-desktop.md
+   └── packaging/
+       └── linux-appimage.md
+   ```
 
-## Library layout
+5. Ask the assistant to read the copied guides. It will help establish a local Git baseline, present a project outline for your approval, and then build the project in verified increments.
 
-```
-discovery.md          # the initial prompt (start here)
-README.md             # this file
-WALKTHROUGH.md        # shot list + narration for the walkthrough video
-walkthrough.tape      # VHS script: renders the terminal portion to GIF/MP4
+You do not need to copy the whole library. The project-specific `FRAMEWORKS/` folder is a snapshot and can be removed when the project is complete.
 
-universal/            # the AI selects which apply (not all always loaded)
-├── agent-conduct.md   # how the AI behaves (always)
-├── architecture.md
-├── documentation.md   # comments, docstrings, dev docs, accuracy
-├── project-outline.md
-├── testing.md
-├── security.md
-├── version-control.md
-├── data.md            # when storing data beyond files
-├── api.md             # when exposing/consuming an API
-├── ux.md              # when there is a UI (a11y + docs)
-├── operations.md      # when deployed / containerised / scaled
-└── release.md         # when distributed / deployed
+## How the guides are selected
 
-languages/            # loaded based on language + domain
-├── rust-desktop.md
-├── rust-web.md
-├── python.md
-├── typescript-web.md
-├── csharp-desktop.md
-├── csharp-web.md
-├── cpp-desktop.md
-├── cpp-embedded.md
-├── go-cli.md
-├── java-desktop.md
-├── kotlin-android.md
-├── swift-apple.md
-├── dart-flutter.md
-├── php-web.md
-├── ruby-web.md
-└── qt-desktop.md
+The assistant always uses `universal/agent-conduct.md` and `universal/project-outline.md`. It selects other guides according to the project:
 
-packaging/            # loaded based on target OS / distribution
-├── linux-appimage.md
-├── windows.md
-├── macos.md
-└── web-deploy.md
-
-seo.md                # loaded only for public websites
-```
-
-## Routing logic (what the AI loads)
-
-| Discovery answer | AI loads |
+| Project need | Guide |
 |---|---|
-| any project | the AI selects the relevant `universal/` docs (always includes `agent-conduct.md` and `project-outline.md`) |
-| any project with code | `universal/documentation.md` |
-| stores data beyond files | `universal/data.md` |
-| exposes/consumes an API | `universal/api.md` |
-| has a UI | `universal/ux.md` |
-| deployed / containerised / scaled | `universal/operations.md` |
-| distributed / deployed | `universal/release.md` |
-| desktop + Rust | `languages/rust-desktop.md` |
-| web + Rust | `languages/rust-web.md` |
-| web + TypeScript | `languages/typescript-web.md` |
-| any + Python | `languages/python.md` |
-| desktop + C# | `languages/csharp-desktop.md` |
-| web + C# | `languages/csharp-web.md` |
-| desktop + C++ | `languages/cpp-desktop.md` |
-| embedded + C++ | `languages/cpp-embedded.md` |
-| CLI/service + Go | `languages/go-cli.md` |
-| desktop + Java | `languages/java-desktop.md` |
-| Android + Kotlin | `languages/kotlin-android.md` |
-| macOS/iOS + Swift | `languages/swift-apple.md` |
-| cross-platform + Flutter | `languages/dart-flutter.md` |
-| web + PHP | `languages/php-web.md` |
-| web + Ruby | `languages/ruby-web.md` |
-| desktop + Qt (C++/Python) | `languages/qt-desktop.md` |
-| Linux desktop | `packaging/linux-appimage.md` |
-| Windows desktop | `packaging/windows.md` |
-| macOS desktop | `packaging/macos.md` |
-| web service | `packaging/web-deploy.md` |
-| public website | `seo.md` |
+| Code in any language | `universal/documentation.md` |
+| Data stored beyond ordinary files | `universal/data.md` |
+| An API is exposed or consumed | `universal/api.md` |
+| A user interface | `universal/ux.md` |
+| Deployment, containers, or scaling | `universal/operations.md` |
+| Distribution or deployment | `universal/release.md` |
+| Rust desktop / web | `languages/rust-desktop.md` / `languages/rust-web.md` |
+| TypeScript web | `languages/typescript-web.md` |
+| Python | `languages/python.md` |
+| C# desktop / web | `languages/csharp-desktop.md` / `languages/csharp-web.md` |
+| C++ desktop / embedded | `languages/cpp-desktop.md` / `languages/cpp-embedded.md` |
+| Go CLI or service | `languages/go-cli.md` |
+| Java desktop | `languages/java-desktop.md` |
+| Kotlin Android | `languages/kotlin-android.md` |
+| Swift macOS or iOS | `languages/swift-apple.md` |
+| Dart / Flutter | `languages/dart-flutter.md` |
+| PHP web | `languages/php-web.md` |
+| Ruby web | `languages/ruby-web.md` |
+| Qt desktop (C++ or Python) | `languages/qt-desktop.md` |
+| Linux / Windows / macOS desktop | The matching guide in `packaging/` |
+| Web deployment | `packaging/web-deploy.md` |
+| Public website that should be indexed | `seo.md` |
 
-**Multiplatform**: if the novice names several systems, the AI loads the
-matching `packaging/*` file for each and notes the primary target.
+For projects targeting multiple platforms, the assistant should select the relevant packaging guides and identify the primary target. The full prompt and catalogue are in [`discovery.md`](discovery.md).
 
-## Design decisions
+## What the assistant does
 
-- **Combined language+domain files** (e.g. `rust-desktop.md`) so the novice
-  pulls fewer files. Separate files can be split later if reuse demands it.
-- **Universal docs are selected per project** (not all always loaded); the AI
-  always includes `agent-conduct.md` and `project-outline.md`, plus the others
-  when their conditions apply.
-- **Novice never authors technical prompts** — the AI selects and requests the
-  guides. The novice's only technical action is copying named files.
+After it reads the selected guides, the assistant should:
 
-## Extending
+- inspect existing code first when working in an existing project;
+- help create a local Git repository and an initial baseline commit (no remote unless requested);
+- present a plain-language outline covering scope, technology, tests, and risks, and wait for approval before coding;
+- implement and verify the approved plan in increments, confirming each before committing it.
 
-Add a new language: create `languages/<name>.md` and add a row to the routing
-table. Add a new target: create a `packaging/<target>.md` and a routing row.
+## Library contents
 
-## Versioning and migration
+- [`discovery.md`](discovery.md) — the starting prompt and guide catalogue.
+- `universal/` — project-wide practices for architecture, testing, security, version control, documentation, data, APIs, UX, operations, and releases.
+- `languages/` — language and application-domain guidance.
+- `packaging/` — platform-specific packaging and web deployment guidance.
+- [`seo.md`](seo.md) — search-engine guidance for public websites.
 
-The library itself is versioned (semver) and tagged in git. Each release notes
-what changed (new language docs, revised rules).
+## Updating guides in an existing project
 
-For an **existing project** that pulled guides into `FRAMEWORKS/`:
+Guides copied into `FRAMEWORKS/` do not update automatically. To refresh them, copy the changed guides from the desired library version over the project's existing copies, then ask the assistant to reread them and explain any relevant rule changes. Record the library version or commit used in the project outline so the guidance can be identified later.
 
-- The pulled files are a snapshot — they do not auto-update when the library
-  changes.
-- To refresh: re-pull the changed files from the new library version into
-  `FRAMEWORKS/`, overwriting the old copies. The AI re-reads them and notes any
-  rule changes that affect the project.
-- The project's own code is unaffected — only the guidance is refreshed.
-- `FRAMEWORKS/` is temporary and can be deleted once the project is complete, so
-  staleness only matters while the project is active.
-- Record the library version used in the project outline (e.g. "guides v1.2.0")
-  so it is clear which ruleset the project was built against.
+## Contributing guides
+
+To add a language or domain, create a guide in `languages/` and add its selection rule to the table in this README and the catalogue in `discovery.md`. To add a packaging target, create a guide in `packaging/` and add its selection rule to both places.
