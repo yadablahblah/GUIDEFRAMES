@@ -7,8 +7,8 @@ A lightweight, two-layer guide library for AI-assisted software creation. It is 
 ## Get started
 
 1. Open [`discovery.md`](discovery.md) and copy its prompt into your AI coding assistant.
-2. Fill in what you want to build and where it should run. Add any important details; you do not need to choose a language or framework.
-3. The assistant will ask questions if needed, then name the guide files that fit your project and explain why.
+2. Describe what you already know about what you want to build and where it should run. If you are unsure, you can leave either blank; the assistant will ask follow-up questions. Add any important details; you do not need to choose a language or framework.
+3. After clarifying anything it needs, the assistant will name the guide files that fit your project and explain why.
 4. Copy only those files into a `FRAMEWORKS/` folder in your project, preserving their subfolders. For example:
 
    ```text

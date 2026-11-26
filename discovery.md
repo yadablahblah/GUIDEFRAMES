@@ -7,6 +7,10 @@ plain language. You do not need to know any technical terms.
 
 ## The prompt (copy and fill in)
 
+Fill in whatever you know. If you are unsure about what you want to build or
+where it should run, leave that line blank or say you are not sure; the AI will
+ask plain-language follow-up questions if it needs more information.
+
 > I want to build: **[describe what you want in your own words]**
 >
 > It should run on: **[Windows / Mac / Linux / more than one / a website / a phone / a server (runs in the background)]**
